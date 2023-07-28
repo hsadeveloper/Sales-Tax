@@ -3,12 +3,14 @@
 
 */
 
-
-
-// @ts-nocheck
 import { writable } from "svelte/store";
+import { PUBLIC_API_KEY } from '$env/static/public'
 
 export const salesData = writable ( []);
+
+export async function load() {
+    console.log("keyyyyy"+PUBLIC_API_KEY) // secret 🤫
+  }
 
 var zip_code = '';
 // @ts-ignore
@@ -18,7 +20,7 @@ export const fetchSales = async (zip_code ) =>{
     const res  = await fetch (url, {
         method: "GET",
         headers: {
-            'X-Api-Key': "ynwR/S8r/1Gan8Slef3sjA==UiTTlTg2jdpnnj6m",
+            'X-Api-Key': PUBLIC_API_KEY,
             "Content-Type": "application/json"
         }
       });
